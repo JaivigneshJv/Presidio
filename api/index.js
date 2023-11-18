@@ -27,7 +27,7 @@ db.once("open", function () {
   console.log("DB Connected successfully");
 });
 
-const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
+const jwtSecret = process.env.JWT_RANDOMKEY;
 
 app.get("/test", (req, res) => {
   res.json("test ok");
