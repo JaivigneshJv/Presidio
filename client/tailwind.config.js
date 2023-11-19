@@ -7,7 +7,7 @@ export default {
         primary: "#f5385D",
       },
       fontFamily: {
-        poppins: ["Poppins"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },
