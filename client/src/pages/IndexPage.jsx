@@ -47,7 +47,7 @@ const IndexPage = (props) => {
               {place.photos?.[0] && (
                 <img
                   className="rounded-lg object-cover aspect-square "
-                  src={"https://presidio-task-backend.azurewebsites.net/" + place.photos?.[0]}
+                  src={"https://presidio-task-backend.azurewebsites.net/uploads/" + place.photos?.[0]}
                   alt="place"
                 />
               )}

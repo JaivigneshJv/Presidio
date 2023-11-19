@@ -27,7 +27,7 @@ const PlacePage = () => {
               {place.photos?.[0] && (
                 <div>
                   <img
-                    src={"https://presidio-task-backend.azurewebsites.net/" + place.photos?.[0]}
+                    src={"https://presidio-task-backend.azurewebsites.net/uploads/" + place.photos?.[0]}
                     alt="place"
                     className="rounded-lg object-cover aspect-square"
                   />
@@ -37,7 +37,7 @@ const PlacePage = () => {
             <div className="grid ">
               {place.photos?.[1] && (
                 <img
-                  src={"https://presidio-task-backend.azurewebsites.net/" + place.photos?.[1]}
+                  src={"https://presidio-task-backend.azurewebsites.net/uploads/" + place.photos?.[1]}
                   alt="place"
                   className="rounded-lg object-cover aspect-square"
                 />
@@ -45,7 +45,7 @@ const PlacePage = () => {
               <div className="overflow-hidden">
                 {place.photos?.[2] && (
                   <img
-                    src={"https://presidio-task-backend.azurewebsites.net/" + place.photos?.[2]}
+                    src={"https://presidio-task-backend.azurewebsites.net/uploads/" + place.photos?.[2]}
                     alt="place"
                     className="rounded-lg object-cover aspect-square relative top-2"
                   />
