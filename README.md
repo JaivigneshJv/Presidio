@@ -3,7 +3,8 @@
 
 This is a Airbnb clone built with ReactJS, MongoDB for database storage and authentication, and NodeJs for API details. The project also utilizes Tailwind CSS for toast messages, React Icons fs , multer for storage , React-router-dom for routing/navigation and more... The project uses Vite as a build tool and is hosted on Vercel and backend on Azure Web Services.
 
->Project is hosted on https://presidio-tau.vercel.app
+> Project is hosted on https://presidio-tau.vercel.app
+
 > Backend API hosted on "https://presidio-task-backend.azurewebsites.net/test"
 > 
 ## Table of Contents
