@@ -22,7 +22,7 @@ app.use("/uploads", express.static(path.join(dirname, "/uploads")));
 app.use(
   cors({
     credentials: true,
-    origin: "",
+    origin: "https://presidio-tau.vercel.app",
   })
 );
 
@@ -81,7 +81,7 @@ app.post("/login", async (req, res) => {
 
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
-  //   console.log(token);
+  // console.log("hell" + token);
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       if (err) throw err;
@@ -169,7 +169,10 @@ app.post("/places", (req, res) => {
 app.get("/places", async (req, res) => {
   try {
     const { token } = req.cookies;
+    // console.log(token);
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      console.log(userData);
       const { id } = userData;
       res.json(await Place.find({ owner: id }));
     });
