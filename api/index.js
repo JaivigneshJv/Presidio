@@ -129,27 +129,12 @@ app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
 });
 
 app.post("/places", (req, res) => {
-  const { token } = req.cookies;
-  const {
-    title,
-    address,
-    addedPhotos,
-    description,
-    perks,
-    extraInfo,
-    checkIn,
-    checkOut,
-    maxGuests,
-    price,
-  } = req.body;
-  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-    if (err) throw err;
-
-    const placeDoc = await Place.create({
-      owner: userData.id,
+  try {
+    const { token } = req.cookies;
+    const {
       title,
       address,
-      photos: addedPhotos,
+      addedPhotos,
       description,
       perks,
       extraInfo,
@@ -157,21 +142,48 @@ app.post("/places", (req, res) => {
       checkOut,
       maxGuests,
       price,
+    } = req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+
+      const placeDoc = await Place.create({
+        owner: userData.id,
+        title,
+        address,
+        photos: addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+        price,
+      });
+      res.json(placeDoc);
     });
-    res.json(placeDoc);
-  });
+  } catch (e) {
+    alert(e);
+  }
 });
 
 app.get("/places", async (req, res) => {
-  const { token } = req.cookies;
-  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-    const { id } = userData;
-    res.json(await Place.find({ owner: id }));
-  });
+  try {
+    const { token } = req.cookies;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      const { id } = userData;
+      res.json(await Place.find({ owner: id }));
+    });
+  } catch (e) {
+    alert(e);
+  }
 });
 
 app.get("/feed-places", async (req, res) => {
-  res.json(await Place.find());
+  try {
+    res.json(await Place.find());
+  } catch (e) {
+    alert(e);
+  }
 });
 
 app.post("/filter-places", async (req, res) => {
@@ -207,8 +219,12 @@ app.post("/filter-places", async (req, res) => {
 // });
 
 app.get("/places/:id", async (req, res) => {
-  const { id } = req.params;
-  res.json(await Place.findById(id));
+  try {
+    const { id } = req.params;
+    res.json(await Place.findById(id));
+  } catch (e) {
+    alert(e);
+  }
 });
 
 app.listen(8080);
