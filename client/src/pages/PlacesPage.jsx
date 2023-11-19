@@ -85,7 +85,8 @@ const PlacesPage = () => {
                     {place.photos.length && (
                       <img
                         src={
-                          process.env.REACT_APP_BACKEND_URL + place.photos[0]
+                          "https://presidio-task-backend.azurewebsites.net/" +
+                          place.photos[0]
                         }
                         alt="Photo"
                         className=""

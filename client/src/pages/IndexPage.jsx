@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const IndexPage = (props) => {
+  // console.log(process.env.REACT_APP_BACKEND_URL);
   const [places, setPlaces] = useState([]);
   // console.log("he");
   // console.log(places);
@@ -46,7 +47,7 @@ const IndexPage = (props) => {
               {place.photos?.[0] && (
                 <img
                   className="rounded-lg object-cover aspect-square "
-                  src={process.env.REACT_APP_BACKEND_URL + place.photos?.[0]}
+                  src={"https://presidio-task-backend.azurewebsites.net/" + place.photos?.[0]}
                   alt="place"
                 />
               )}
