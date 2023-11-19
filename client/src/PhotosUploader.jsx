@@ -55,7 +55,7 @@ const PhotosUploader = ({ addedPhotos, onChange }) => {
             <div className="h-32 flex" key={link}>
               <img
                 className="rounded-2xl w-full object-cover"
-                src={"https://presidio-task-backend.azurewebsites.net/" + link}
+                src={"https://presidio-task-backend.azurewebsites.net/uploads/" + link}
                 alt="Photo"
               />
             </div>
