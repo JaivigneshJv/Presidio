@@ -15,9 +15,7 @@ const Place = require("./models/Place");
 require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
-const path = require("path");
-const dirname = path.resolve();
-app.use("/uploads", express.static(path.join(dirname, "/uploads")));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(
   cors({
@@ -104,7 +102,7 @@ app.post("/upload-by-link", async (req, res) => {
   const newName = "photo" + Date.now() + ".jpg";
   await imageDownloader.image({
     url: link,
-    dest: dirname + "/uploads/" + newName,
+    dest: __dirname + "/uploads/" + newName,
   });
 
   res.json(newName);
