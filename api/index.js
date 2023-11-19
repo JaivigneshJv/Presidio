@@ -20,7 +20,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "*",
   })
 );
 
@@ -110,16 +110,20 @@ app.post("/upload-by-link", async (req, res) => {
 
 const photosMiddleware = multer({ dest: "uploads/" });
 app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
-  const uploadedFiles = [];
-  for (let i = 0; i < req.files.length; i++) {
-    const { path, originalname } = req.files[i];
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    uploadedFiles.push(newPath.replace("uploads/", ""));
+  try {
+    const uploadedFiles = [];
+    for (let i = 0; i < req.files.length; i++) {
+      const { path, originalname } = req.files[i];
+      const parts = originalname.split(".");
+      const ext = parts[parts.length - 1];
+      const newPath = path + "." + ext;
+      fs.renameSync(path, newPath);
+      uploadedFiles.push(newPath.replace("uploads/", ""));
+    }
+    res.json(uploadedFiles);
+  } catch (e) {
+    alert(e);
   }
-  res.json(uploadedFiles);
 });
 
 app.post("/places", (req, res) => {
@@ -169,7 +173,7 @@ app.get("/feed-places", async (req, res) => {
 });
 
 app.post("/filter-places", async (req, res) => {
-  const { title, location, checkIn, checkOut, maxGuests } = req.body;
+  const { title, location, checkIn, checkOut, maxGuests, price } = req.body;
   // console.log(req.body);
   const filter = {};
   if (title) filter.title = new RegExp(title, "i");
@@ -177,6 +181,7 @@ app.post("/filter-places", async (req, res) => {
   if (checkIn) filter.checkIn = { $gte: new Date(checkIn) };
   if (checkOut) filter.checkOut = { $lte: new Date(checkOut) };
   if (maxGuests) filter.maxGuests = { $lte: Number(maxGuests) };
+  if (price) filter.price = { $lte: Number(price) };
 
   try {
     const places = await Place.find(filter);
@@ -198,5 +203,10 @@ app.post("/filter-places", async (req, res) => {
 //     res.status(500).json({ error: err.message });
 //   }
 // });
+
+app.get("/places/:id", async (req, res) => {
+  const { id } = req.params;
+  res.json(await Place.findById(id));
+});
 
 app.listen(4000);

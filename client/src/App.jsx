@@ -8,8 +8,9 @@ import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import AccountPage from "./pages/AccountPage";
 import EditPage from "./pages/EditPage";
+import PlacePage from "./pages/PlacePage";
 
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://presidio-task-backend.azurewebsites.net/";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/account/:subpage?" element={<AccountPage />} />
           <Route path="/account/:subpage/:action" element={<AccountPage />} />
           <Route path="/edit/places/:id" element={<EditPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>

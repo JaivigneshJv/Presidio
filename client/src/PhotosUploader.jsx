@@ -55,7 +55,7 @@ const PhotosUploader = ({ addedPhotos, onChange }) => {
             <div className="h-32 flex" key={link}>
               <img
                 className="rounded-2xl w-full object-cover"
-                src={`http://localhost:4000/uploads/` + link}
+                src={process.env.REACT_APP_BACKEND_URL + link}
                 alt="Photo"
               />
             </div>

@@ -19,6 +19,7 @@ const Header = () => {
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
   const [maxGuests, setMaxGuests] = useState(0);
+  const [price, setPrice] = useState(0);
   const [data, setData] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
   const [searched, setsearched] = useState(false);
@@ -32,6 +33,7 @@ const Header = () => {
         checkIn: checkIn,
         checkOut: checkOut,
         maxGuests: maxGuests,
+        price: price,
       });
       // console.log(title, location, checkIn, checkOut, maxGuests);
       setData(response.data);
@@ -101,7 +103,7 @@ const Header = () => {
       </header>
       <div className={classname}>
         <div className="flex mt-10 justify-center ">
-          <div className="grid gap-2 sm:grid-cols-6">
+          <div className="grid gap-2 sm:grid-cols-7">
             <div>
               <h3 className="mt-2 -mb-1">Title</h3>
               <input
@@ -143,6 +145,15 @@ const Header = () => {
               <input
                 value={maxGuests}
                 onChange={(e) => setMaxGuests(e.target.value)}
+                type="number"
+                placeholder="0"
+              />
+            </div>
+            <div>
+              <h3 className="mt-2 -mb-1">Price</h3>
+              <input
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
                 type="number"
                 placeholder="0"
               />
