@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext, useState } from "react";
-import Airbnb from "./assets/Airbnb.svg";
-import Search from "./assets/Search.svg";
-import Hamburger from "./assets/Hamburger.svg";
+import Airbnb from "./assets/airbnb.svg";
+import Search from "./assets/search.svg";
+import Hamburger from "./assets/hamburger.svg";
 import User from "./assets/user.svg";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext.jsx";
