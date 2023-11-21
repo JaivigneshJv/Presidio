@@ -5,7 +5,7 @@ This is a Airbnb clone built with ReactJS, MongoDB for database storage and auth
 
 > Project is hosted on https://presidio-tau.vercel.app
 
-> Backend API hosted on "https://presidio-task-backend.azurewebsites.net/test"
+> Backend API hosted on "https://presidio-task-backend.azurewebsites.net/test"  (takes times to refresh sever if not used for a long time)
 
 
 ## Table of Contents
